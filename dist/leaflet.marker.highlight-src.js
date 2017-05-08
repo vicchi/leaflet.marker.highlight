@@ -12,13 +12,10 @@ L.Marker.include({
             L.DomUtil.addClass(light, "temporary");
         }
         this.getPane().appendChild(light);
-        this.on('remove', function(){
-            light.remove();
-        })
     },
 
     _setPos: function(pos) {
-        this._setPosOrigin(pos)
+        this._setPosOrigin(pos);
         L.DomUtil.setPosition(this._light, pos);
     },
 
@@ -29,7 +26,7 @@ L.Marker.include({
 
     disableTemporaryHighlight: function(value) {
         delete this.options.highlight;
-        L.DomUtil.removeClass(this._light, "temporary")
+        L.DomUtil.removeClass(this._light, "temporary");
     },
 
     enablePermanentHighlight: function() {
@@ -39,7 +36,7 @@ L.Marker.include({
 
     disablePermanentHighlight: function(value) {
         delete this.options.highlight;
-        L.DomUtil.removeClass(this._light, "permanent")
+        L.DomUtil.removeClass(this._light, "permanent");
     },
 
     _initIconOrigin: function() {
@@ -119,4 +116,4 @@ L.Marker.include({
 
         this._resetZIndex();
     }
-})
+});

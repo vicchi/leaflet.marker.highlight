@@ -1,0 +1,97 @@
+//colors
+
+$color_glow: rgba(254, 211, 0, 1);
+$color_flare: rgba(66, 186, 255, 1);
+
+@-webkit-keyframes highlight1 {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+	100% {
+		width: 200px;
+		height: 200px;
+		opacity: 0.4;
+	}
+}
+
+@-webkit-keyframes highlight {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+	100% {
+		width: 50px;
+		height: 50px;
+		opacity: 0.8;
+	}
+}
+
+.permanent {
+	.glow {
+		background: -webkit-radial-gradient($color_flare, rgba(255, 223, 67, 0) 70%)!important;
+		-webkit-animation: highlight1 2s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+
+	.flare {
+		background: $color_flare !important;
+		-webkit-animation: highlight 2s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+}
+.leaflet-marker-pane .light {
+
+	width: 200px !important;
+	height: 200px !important;
+	margin-top: -100px !important;
+	margin-left: -100px !important;
+	background: transparent !important;
+	border: transparent !important;
+
+	.glow {
+		width: 0;
+		height: 0;
+		border-radius: 50%;
+		opacity: 0;
+		background: -webkit-radial-gradient($color_glow, rgba(255, 223, 67, 0) 70%);
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: all 1000ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+
+	.flare {
+		width: 0;
+		height: 0;
+		border-radius: 50%;
+		opacity: 0;
+		background: rgba(255, 223, 67, 0);
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: all 1000ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+}
+
+img:hover + .light.temporary {
+	.glow {
+		width: 200px;
+		height: 200px;
+		opacity: 0.2;
+		background: -webkit-radial-gradient($color_glow, rgba(255, 223, 67, 0) 70%);
+		transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+
+	.flare {
+		width: 50px;
+		height: 50px;
+		opacity: 0.5;
+		background: $color_glow;
+		transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+}
