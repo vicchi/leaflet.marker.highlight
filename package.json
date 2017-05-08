@@ -5,10 +5,10 @@
     "main": "index.js",
     "scripts": {
         "dev": "browser-sync start --server --files \"**/*.html,**/*.css,**/*.js\"",
-        "build-js": "cat  index.js > ./dist/leaflet.marker.highlight-src.js",
-        "build-css": "cat  index.css > ./dist/leaflet.marker.highlight-src.css",
-        "compress-js": "uglifyjs ./dist/leaflet.marker.highlight-src.js -o ./dist/leaflet.marker.highlight.js -m",
-        "compress-css": "uglifycss ./dist/leaflet.marker.highlight-src.css > ./dist/leaflet.marker.highlight.css",
+        "build-js": "cat src/js/leaflet.marker.highlight.js > ./dist/leaflet.marker.highlight-src.js",
+        "build-css": "cp src/sass/leaflet.marker.highlight.scss ./dist/; cat src/sass/leaflet.marker.highlight.scss | ./node_modules/node-sass/bin/node-sass > ./dist/leaflet.marker.highlight-src.css",
+        "compress-js": "./node_modules/uglifyjs/bin/uglifyjs ./dist/leaflet.marker.highlight-src.js -o ./dist/leaflet.marker.highlight.js -m",
+        "compress-css": "./node_modules/uglifycss/uglifycss ./dist/leaflet.marker.highlight-src.css > ./dist/leaflet.marker.highlight.css",
         "build": "npm run build-js && npm run build-css && npm run compress-js && npm run compress-css",
         "release": "git push origin master && git checkout gh-pages && git merge master && git push origin gh-pages && git checkout master && npm publish"
     },
@@ -22,9 +22,21 @@
         "marker"
     ],
     "author": "brandonxiang",
+    "contributors": [
+        {
+            "name": "Gary Gale",
+            "email": "gary@vicchi.org"
+        }
+    ],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/brandonxiang/leaflet.marker.hightlight/issues"
     },
-    "homepage": "https://github.com/brandonxiang/leaflet.marker.hightlight#readme"
+    "homepage": "https://github.com/brandonxiang/leaflet.marker.hightlight#readme",
+    "devDependencies": {
+        "browser-sync": "^2.18.8",
+        "node-sass": "^4.5.2",
+        "uglifycss": "0.0.27",
+        "uglifyjs": "^2.4.10"
+    }
 }
